@@ -39,6 +39,7 @@ openButton.addEventListener("click", () => {
       const textElement = document.createElement("span");
       textElement.textContent = item.name;
       textElement.style.color = getRarityColor(item.rarity);
+      textElement.className = 'hidden-text'; // Скрываем текст
       itemElement.appendChild(textElement);
 
       rouletteElement.appendChild(itemElement);
@@ -75,6 +76,9 @@ openButton.addEventListener("click", () => {
       requestAnimationFrame(animate);
     } else {
       isSpinning = false;
+      // Показываем текст только для выбранного элемента
+      const selectedItem = rouletteElement.childNodes[targetIndex + numberOfItems];
+      selectedItem.childNodes[1].classList.remove('hidden-text');
       resultElement.textContent = `Вы получили: ${items[targetIndex].name} (${items[targetIndex].rarity})`;
       resultElement.style.color = getRarityColor(items[targetIndex].rarity);
     }
