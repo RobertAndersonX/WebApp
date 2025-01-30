@@ -35,6 +35,11 @@ openButton.addEventListener("click", () => {
       imgElement.src = item.image;
       imgElement.alt = item.name;
       itemElement.appendChild(imgElement);
+
+      const textElement = document.createElement("span");
+      textElement.textContent = item.name;
+      itemElement.appendChild(textElement);
+
       rouletteElement.appendChild(itemElement);
     });
   }
