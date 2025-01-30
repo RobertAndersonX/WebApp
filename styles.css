@@ -20,6 +20,8 @@ body {
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
+  font-weight: bold; /* Делаем заголовок жирным */
+  color: #fff; /* Белый цвет текста */
 }
 
 .roulette-container {
@@ -47,13 +49,22 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column; /* Добавляем для центровки текста под изображением */
 }
 
 .roulette-item img {
   width: 100%;
-  height: 100%;
+  height: 70%; /* Уменьшил высоту изображения */
   object-fit: cover;
   border-radius: 5px;
+}
+
+.roulette-item span {
+  font-weight: bold; /* Делаем текст жирным */
+  font-size: 18px; /* Увеличиваем размер текста */
+  color: #fff; /* Белый цвет текста */
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 
+               0 0 20px #b100ff, 0 0 30px #b100ff, 0 0 40px #b100ff; /* Неоновое свечение */
 }
 
 .result {
@@ -62,6 +73,10 @@ h1 {
   padding: 10px;
   background-color: #3a3a3a;
   border-radius: 5px;
+  font-weight: bold; /* Делаем текст жирным */
+  color: #fff; /* Белый цвет текста */
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 
+               0 0 20px #b100ff, 0 0 30px #b100ff, 0 0 40px #b100ff; /* Неоновое свечение */
 }
 
 button {
@@ -73,6 +88,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-weight: bold; /* Делаем текст жирным */
 }
 
 button:hover {
