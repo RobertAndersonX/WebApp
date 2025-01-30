@@ -38,6 +38,7 @@ openButton.addEventListener("click", () => {
 
       const textElement = document.createElement("span");
       textElement.textContent = item.name;
+      textElement.style.color = getRarityColor(item.rarity);
       itemElement.appendChild(textElement);
 
       rouletteElement.appendChild(itemElement);
@@ -85,17 +86,17 @@ openButton.addEventListener("click", () => {
 function getRarityColor(rarity) {
   switch (rarity) {
     case "Обычная":
-      return "#ffffff";
-    case "Редкая":
-      return "#0000ff";
-    case "Уникальная":
-      return "#00ff00";
+      return "#696969"; // Темно-серый
     case "Необычная":
-      return "#ff00ff";
+      return "#00ff00"; // Зеленый
+    case "Редкая":
+      return "#0000ff"; // Голубо-синий
     case "Эпическая":
-      return "#800080";
+      return "#800080"; // Фиолетово-пурпурный
     case "Легендарная":
-      return "#ffd700";
+      return "#ffd700"; // Золотисто-оранжевый
+    case "Уникальная":
+      return "#00ffff"; // Ярко-бирюзовый
     default:
       return "#fff";
   }
