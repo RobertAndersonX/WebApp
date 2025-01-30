@@ -62,6 +62,7 @@ h1 {
 .roulette-item span {
   font-weight: bold; /* Делаем текст жирным */
   font-size: 18px; /* Увеличиваем размер текста */
+  margin-top: 5px; /* Отступ сверху для текста */
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.3); /* Неоновое свечение */
 }
 
@@ -91,4 +92,8 @@ button {
 button:hover {
   background-color: #9900dd; /* Немного затемнённый оттенок при наведении */
   box-shadow: 0 0 10px #b100ff; /* Добавляем свечение при наведении */
+}
+
+.hidden-text {
+  display: none; /* Скрываем текст */
 }
