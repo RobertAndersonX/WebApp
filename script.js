@@ -1,17 +1,16 @@
-// script.js
 const items = [
-  { name: "AK-47 | Красная линия", rarity: "Фиолетовый", image: "images/Carosta.jpg" },
-  { name: "AWP | Электрохайв", rarity: "Розовый", image: "images/Trump.jpg" },
-  { name: "M4A4 | Звёздный шторм", rarity: "Голубой", image: "images/Putin.jpg" },
-  { name: "Нож | Бабочка | Ультрафиолет", rarity: "Золотой", image: "images/Schrek.jpg" },
-  { name: "Desert Eagle | Кобра", rarity: "Фиолетовый", image: "images/Zelensky.jpg" },
-  { name: "Перчатки | Спектр", rarity: "Золотой", image: "images/Gosling.jpg" },
-  { name: "USP-S | Кровавая паутина", rarity: "Розовый", image: "images/Derden.jpg" },
-  { name: "Glock-18 | Водянистый", rarity: "Голубой", image: "images/Ricky.jpg" },
-  { name: "AK-47 | Неоновая революция", rarity: "Фиолетовый", image: "images/Satoru.jpeg" },
-  { name: "AWP | Гиперзверь", rarity: "Розовый", image: "images/Shariy.jpg" },
-  { name: "M4A1-S | Кибербезопасность", rarity: "Голубой", image: "images/Chmonia.jpg" },
-  { name: "Нож | Коготь | Ультрафиолет", rarity: "Золотой", image: "images/schelobaev.jpg" },
+  { name: "Пидор Кароста", rarity: "Легендарная", image: "images/Carosta.jpg" },
+  { name: "Дональд Трамп", rarity: "Эпическая", image: "images/Trump.jpg" },
+  { name: "Владимир Путин", rarity: "Эпическая", image: "images/Putin.jpg" },
+  { name: "Шрек", rarity: "Необычная", image: "images/Schrek.jpg" },
+  { name: "Владимир Зеленский", rarity: "Эпическая", image: "images/Zelensky.jpg" },
+  { name: "Райан Гослинг", rarity: "Уникальная", image: "images/Gosling.jpg" },
+  { name: "Тайлер Дерден", rarity: "Редкая", image: "images/Derden.jpg" },
+  { name: "Рики Мартин", rarity: "Легендарная", image: "images/Ricky.jpg" },
+  { name: "Годжо Сатору", rarity: "Редкая", image: "images/Satoru.jpeg" },
+  { name: "Анатолий Шарий", rarity: "Редкая", image: "images/Shariy.jpg" },
+  { name: "Чмоня", rarity: "Обычная", image: "images/Chmonia.jpg" },
+  { name: "Михаил Шелобаев", rarity: "Редкая", image: "images/schelobaev.jpg" },
 ];
 
 const rouletteElement = document.getElementById("roulette");
@@ -80,13 +79,17 @@ openButton.addEventListener("click", () => {
 
 function getRarityColor(rarity) {
   switch (rarity) {
-    case "Голубой":
-      return "#4fc3f7";
-    case "Фиолетовый":
-      return "#ba68c8";
-    case "Розовый":
-      return "#ff79a3";
-    case "Золотой":
+    case "Обычная":
+      return "#ffffff";
+    case "Редкая":
+      return "#0000ff";
+    case "Уникальная":
+      return "#00ff00";
+    case "Необычная":
+      return "#ff00ff";
+    case "Эпическая":
+      return "#800080";
+    case "Легендарная":
       return "#ffd700";
     default:
       return "#fff";
