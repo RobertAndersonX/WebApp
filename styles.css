@@ -20,21 +20,19 @@ body {
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
-  font-weight: bold; /* Делаем заголовок жирным */
-  color: #fff; /* Белый цвет текста */
+  font-weight: bold;
+  color: #fff;
 }
 
 .roulette-container {
   position: relative;
   width: 200px;
-  height: 250px; /* Увеличил высоту рамки */
+  height: 250px;
   overflow: hidden;
-  border: 2px solid #b100ff; /* Неоново-пурпурный цвет */
+  border: 2px solid #b100ff;
   border-radius: 5px;
   margin: 10px auto;
-  /* Добавляем свечение рамки */
-  box-shadow: 0 0 10px #b100ff,
-              inset 0 0 10px #b100ff;
+  box-shadow: 0 0 10px #b100ff, inset 0 0 10px #b100ff;
 }
 
 .roulette {
@@ -45,26 +43,76 @@ h1 {
 }
 
 .roulette-item {
-  height: 250px; /* Увеличил высоту элемента соответственно рамке */
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column; /* Добавляем для центровки текста под изображением */
+  position: relative;
 }
 
-.roulette-item img {
+/* Стили для карточек с учетом редкости */
+.card {
+  width: 190px;
+  height: 254px;
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
   width: 100%;
-  height: 100%; /* Восстанавливаем высоту изображения */
-  object-fit: cover;
-  border-radius: 5px;
+  transform: scale(0.8);
+  filter: blur(25px);
+  transition: opacity 0.5s;
 }
 
-.roulette-item span {
-  font-weight: bold; /* Делаем текст жирным */
-  font-size: 18px; /* Увеличиваем размер текста */
-  margin-top: 5px; /* Отступ сверху для текста */
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.3); /* Неоновое свечение */
+.card-info {
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: 0.7rem;
 }
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.7rem;
+}
+
+.card span {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+/* Цвета в зависимости от редкости */
+.card.common { --background: linear-gradient(to left, #696969 0%, #a9a9a9 100%); background: var(--background); }
+.card.common::after { background: var(--background); }
+.card.uncommon { --background: linear-gradient(to left, #00ff00 0%, #32cd32 100%); background: var(--background); }
+.card.uncommon::after { background: var(--background); }
+.card.rare { --background: linear-gradient(to left, #0000ff 0%, #1e90ff 100%); background: var(--background); }
+.card.rare::after { background: var(--background); }
+.card.epic { --background: linear-gradient(to left, #800080 0%, #ba55d3 100%); background: var(--background); }
+.card.epic::after { background: var(--background); }
+.card.legendary { --background: linear-gradient(to left, #ffd700 0%, #ff8c00 100%); background: var(--background); }
+.card.legendary::after { background: var(--background); }
+.card.unique { --background: linear-gradient(to left, #00ffff 0%, #20b2aa 100%); background: var(--background); }
+.card.unique::after { background: var(--background); }
 
 .result {
   font-size: 18px;
@@ -72,28 +120,76 @@ h1 {
   padding: 10px;
   background-color: #3a3a3a;
   border-radius: 5px;
-  font-weight: bold; /* Делаем текст жирным */
-  color: #fff; /* Белый цвет текста */
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.3); /* Неоновое свечение */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #b100ff; /* Изменил цвет кнопки под стиль рамки */
+  background-color: #b100ff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-weight: bold; /* Делаем текст жирным */
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #9900dd; /* Немного затемнённый оттенок при наведении */
-  box-shadow: 0 0 10px #b100ff; /* Добавляем свечение при наведении */
+  background-color: #9900dd;
+  box-shadow: 0 0 10px #b100ff;
 }
 
-.hidden-text {
-  display: none; /* Скрываем текст */
+/* Финальная анимация */
+.final-card-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+}
+
+.final-card {
+  width: 190px;
+  height: 254px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: fallAndReveal 3s ease-in-out forwards;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.7rem;
+}
+
+.card-back {
+  background: linear-gradient(45deg, #333, #666);
+  transform: rotateY(180deg);
+}
+
+@keyframes fallAndReveal {
+  0% {
+    transform: translateY(-500px) rotateX(0deg) rotateY(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0) rotateX(720deg) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotateX(720deg) rotateY(180deg);
+    opacity: 1;
+  }
 }
